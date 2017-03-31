@@ -1,8 +1,6 @@
-const keystone = require('keystone');
 const Router = require('express').Router;
 const forgotPassword = require('./forgotPassword');
 const changePassword = require('./changePassword');
-const Types = keystone.Field.Types;
 
 const internals = {};
 
@@ -29,6 +27,5 @@ internals.plugin.enhanceUserModel = function enhanceUserModel (Model) {
 	require('./model/ForgotPassword');
 	Model.add({
 		passwordLastUpdated: { type: Date },
-		forgotPasswordRequests: { type: Types.Relationship, ref: 'ForgotPassword', many: true, hidden: true },
 	});
 };
