@@ -1,11 +1,10 @@
 # Keystone Forgotten Password
 ## What is This?
-This is for keystone applications only. Keystone projects having a user model may require a reset password setup also,
-this is just one implementation on how you can go about reseting a keystone password type on a user model.
+This is for keystone applications only. Keystone projects having a user model may require a reset password setup.
 
 ** Note **
 
-This is a fairly opinionated plugin which assumes you have a user model with a password property with a keystone Password field type.
+This plugin assumes you have a user model with a password property with a keystone Password field type.
 
 
 ## Prerequisites
