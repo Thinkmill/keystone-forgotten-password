@@ -30,7 +30,8 @@ const changePassword = (user, password) => {
 
 const validate = password => {
 	let detail = '';
-	const User = keystone.list('User');
+	const UserModel = keystone.get('user model');
+	const User = keystone.list(UserModel);
 	const min = User.fields.password.options.min;
 	const max = User.fields.password.options.max || 72;
 	const complexity = User.fields.password.options.complexity;
