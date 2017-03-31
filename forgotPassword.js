@@ -10,6 +10,12 @@ const sendForgottenPasswordEmail = (user, onForgotEmail) => forgotPassword => {
 	return onForgotEmail(locals);
 };
 
+const emailValidation = email => {
+	// http://emailregex.com/
+	const match = email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+	return !!match;
+}
+
 module.exports = ({ onForgotEmail }) => (req, res, next) => {
 	const User = keystone.list('User');
 	const ForgotPassword = keystone.list('ForgotPassword');
@@ -17,7 +23,11 @@ module.exports = ({ onForgotEmail }) => (req, res, next) => {
 	const { email } = req.body;
 	if (!email) {
 		errors.email = 'Email is required';
-	};
+	}
+
+	if (email && !emailValidation(email)) {
+		errors.email = 'Valid email required';
+	}
 
 	if (Object.keys(errors).length) {
 		return res.status(400).json({
