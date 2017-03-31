@@ -81,4 +81,4 @@ accepts the following config object.
 const { enhanceUser } = require('keystone-forgotten-password');
 ```
 
-To add the additional property to your User model you can use this helper which adds the field we use internally. Adding this field manually is possibly but not recommended.
+To add the additional property ```passwordLastUpdated: { type: Date },``` to your User model you can use this helper. Adding this field manually is possibly but not recommended.
