@@ -1,0 +1,16 @@
+{
+  "name": "keystone-password-reset",
+  "version": "1.0.0",
+  "author": "Mike James",
+  "main": "index.js",
+  "repository": "git@github.com:Thinkmill/keystone-password-reset.git",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.18.1",
+    "uuid": "^3.0.1"
+  },
+  "peerDependencies": {
+    "keystone": "4.0.0-beta.5",
+    "express": "^4.0.0"
+  }
+}
