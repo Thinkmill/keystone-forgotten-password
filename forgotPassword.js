@@ -14,7 +14,7 @@ const emailValidation = email => {
 	// http://emailregex.com/
 	const match = email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 	return !!match;
-}
+};
 
 module.exports = ({ onForgotEmail }) => (req, res, next) => {
 	const User = keystone.list('User');
