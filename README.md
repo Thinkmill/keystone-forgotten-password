@@ -58,7 +58,7 @@ User.register();
 
 |	Route	|		Payload		 | Response |
 |-----|--------|----------|
-| POST /forgot | { "email": "test@test.com" } | 400 for email validation, 200 for email exists or does not|
+| POST /forgot | ```{ "email": "test@test.com" } ```| 400 for email validation, 200 for email exists or does not|
 |	POST | /change-password |	{ "password": "usersNewPassword123", forgotPasswordKey: "(UNIQUE GUID Value)" }|
 
 
@@ -72,7 +72,7 @@ accepts the following config object.
 
 |	Key	|		Value		 | Required |
 |-----|------------|----------|
-| onForgotEmail | requires a function which returns a promise. The promise is given the entire user object and ```forgotPasswordKey`` which must be provided in the reset password link to change-password in your front end application. | Yes |
+| onForgotEmail | requires a function which returns a promise. The promise is given the entire user object and ```forgotPasswordKey``` which must be provided in the reset password link to change-password in your front end application. | Yes |
 | onChangePasswordEmail | requires a function which returns a promise. The promise is given the entire user object | Yes |
 | keyExpiry | Integer in hours, defaults to 24 hours. The key sent in the email will live until the given expiry | No |
 
