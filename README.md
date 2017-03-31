@@ -1,6 +1,6 @@
 # Keystone Forgotten Password
 ## What is This?
-This is for keystone applications only. Keystone projects having a user model may require a reset password setup.
+This is for keystone applications only. Keystone projects having a user model may require a reset password setup. this plugin adds the required models and routes, you will have to interact with the routes yourself in your own application, including writing your own email handlers.
 
 ** Note **
 
@@ -21,7 +21,7 @@ This plugin assumes you have a user model with a password property with a keysto
 const forgottenPasswordPlugin = require('keystone-forgotten-password');
 
 const forgottenPassword = forgottenPasswordPlugin({
-	// define what happens on the given hooks.
+	// define what happens on the given email handlers.
 	onForgotEmail: (locals) => sendForgotEmail(locals),
 	onChangePasswordEmail: (locals) => sendChangePasswordEmail(locals),
 });
@@ -59,7 +59,7 @@ User.register();
 |	Route	|		Payload		 | Response |
 |-----|--------|----------|
 | POST /forgot | ```{ "email": "test@test.com" } ```| 400 for email validation, 200 for email exists or does not|
-|	POST | /change-password |	{ "password": "usersNewPassword123", forgotPasswordKey: "(UNIQUE GUID Value)" }|
+|	POST | /change-password |	```{ "password": "usersNewPassword123", forgotPasswordKey: "(UNIQUE GUID Value)" }```|
 
 
 ## API
