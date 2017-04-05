@@ -6,6 +6,7 @@
   "repository": "git@github.com:Thinkmill/keystone-password-reset.git",
   "license": "MIT",
   "dependencies": {
+    "debug": "^2.6.3",
     "moment": "^2.18.1",
     "uuid": "^3.0.1"
   },
@@ -14,13 +15,20 @@
     "keystone": "4.0.0-beta.5"
   },
   "devDependencies": {
+    "body-parser": "^1.17.1",
     "eslint": "^3.18.0",
     "eslint-config-keystone": "^3.0.0",
+    "eslint-plugin-jest": "^19.0.1",
     "eslint-plugin-mocha": "^4.9.0",
-    "eslint-plugin-react": "^6.10.3"
+    "eslint-plugin-react": "^6.10.3",
+    "express": "^4.15.2",
+    "jest": "^19.0.2",
+    "keystone": "^4.0.0-beta.5",
+    "supertest": "^3.0.0"
   },
   "scripts": {
-    "test" : "npm run lint",
-    "lint" : "eslint ."
+    "test": "jest && npm run lint",
+    "lint": "eslint .",
+    "test:watch": "jest --watch"
   }
 }
