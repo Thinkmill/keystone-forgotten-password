@@ -1,0 +1,17 @@
+anguage: node_js
+node_js:
+- '6'
+matrix:
+  include:
+    - node_js: '6'
+      script: yarn test
+    - node_js: '5'
+      script: yarn test
+    - node_js: '4'
+      script: yarn test
+git:
+  depth: 10
+cache:
+  yarn: true
+  directories:
+    - node_modules
