@@ -16,8 +16,10 @@ This plugin assumes you have a `user model` with a password property with a keys
 ## Usage
 
 For IP logging of requests ensure you set:
+``` JavaScript
+	app.enable('trust proxy')
 ```
-	app.enable('trust proxy')```
+
 
 
 ```JavaScript
