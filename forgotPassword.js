@@ -18,7 +18,8 @@ const emailValidation = email => {
 };
 
 module.exports = ({ onForgotEmail }) => (req, res, next) => {
-	const User = keystone.list('User');
+	const UserModel = keystone.get('user model');
+	const User = keystone.list(UserModel);
 	const ForgotPassword = keystone.list('ForgotPassword');
 	var errors = {};
 

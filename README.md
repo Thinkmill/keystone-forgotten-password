@@ -4,7 +4,7 @@ This is for keystone applications only. Keystone projects having a user model ma
 
 ** Note **
 
-This plugin assumes you have a user model with a password property with a keystone Password field type.
+This plugin assumes you have a `user model` with a password property with a keystone Password field type.
 
 
 ## Prerequisites
