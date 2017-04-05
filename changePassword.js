@@ -35,6 +35,7 @@ const validate = password => {
 	const min = User.fields.password.options.min;
 	const max = User.fields.password.options.max || 72;
 	const complexity = User.fields.password.options.complexity;
+
 	if (min && typeof passwordValue === 'string' && password.length < min) {
 		detail += 'password must be longer than ' + min + ' characters\n';
 	}
@@ -73,18 +74,19 @@ module.exports = ({ onChangePasswordEmail, RESET_PASSWORD_KEY_EXPIRY }) => (req,
 	const ForgotPassword = keystone.list('ForgotPassword');
 	var errors = {};
 	const { password, forgotPasswordKey } = req.body;
+
 	if (!password) {
 		errors.password = 'Password is required';
-	}
+	} else {
+		const result = validate(password);
 
-	const result = validate(password);
+		if (result) {
+			errors.password = result;
+		}
 
-	if (result) {
-		errors.password = result;
-	}
-
-	if (!forgotPasswordKey) {
-		errors.forgotPasswordKey = 'forgotPasswordKey is required';
+		if (!forgotPasswordKey) {
+			errors.forgotPasswordKey = 'forgotPasswordKey is required';
+		}
 	}
 
 	if (Object.keys(errors).length) {

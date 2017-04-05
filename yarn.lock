@@ -1685,7 +1685,7 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
-debug@2, debug@2.6.3, debug@^2.2.0, debug@^2.6.3:
+debug@2, debug@2.6.3, debug@^2.1.1, debug@^2.2.0, debug@^2.6.3:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.3.tgz#0f7eb8c30965ec08c72accfa0130c8b79984141d"
   dependencies:
@@ -1709,7 +1709,7 @@ debug@2.6.0:
   dependencies:
     ms "0.7.2"
 
-debug@2.6.1, debug@^2.1.1:
+debug@2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.1.tgz#79855090ba2c4e3115cc7d8769491d58f0491351"
   dependencies:
@@ -5695,6 +5695,10 @@ through2@~0.4.0, through2@~0.4.1:
 "through@>=2.2.7 <3", through@^2.3.6, through@~2.3.4:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
+
+timekeeper@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/timekeeper/-/timekeeper-1.0.0.tgz#2f38aee1e94b11dd66d8580ff1aa9dcc6a2ba0d8"
 
 timers-browserify@^1.0.1:
   version "1.4.2"

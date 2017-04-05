@@ -1,7 +1,8 @@
 const express = require('express');
 const request = require('supertest');
 const bodyParser = require('body-parser');
-const GUID = '27156760-56d9-4d5b-904d-1eaf0d96e17a';
+const { GUID } = require('../constants');
+
 jest.setMock('keystone', require('../keystone-mock'));
 jest.setMock('uuid/v4', () => GUID);
 
@@ -100,6 +101,6 @@ test('onForgotEmail is called', () => {
 	.then(response => {
 		expect(response.body).toEqual({ success: true });
 		expect(onForgotEmail.mock.calls.length).toBe(1);
-		expect(onForgotEmail).toBeCalledWith({ email: 'test@test.com', forgotPasswordKey: GUID, recipientEmail: 'test@test.com' });
+		expect(onForgotEmail).toBeCalledWith({ email: 'test@test.com', forgotPasswordKey: GUID, id: '1234', recipientEmail: 'test@test.com' });
 	});
 });

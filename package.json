@@ -24,7 +24,8 @@
     "express": "^4.15.2",
     "jest": "^19.0.2",
     "keystone": "^4.0.0-beta.5",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "timekeeper": "^1.0.0"
   },
   "scripts": {
     "test": "jest && npm run lint",
