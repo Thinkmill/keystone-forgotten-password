@@ -1,9 +1,9 @@
 {
-  "name": "keystone-password-reset",
+  "name": "keystone-forgotten-password",
   "version": "1.0.0",
   "author": "Mike James",
   "main": "index.js",
-  "repository": "git@github.com:Thinkmill/keystone-password-reset.git",
+  "repository": "git@github.com:Thinkmill/keystone-forgotten-password.git",
   "license": "MIT",
   "dependencies": {
     "debug": "^2.6.3",
