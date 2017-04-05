@@ -1,6 +1,6 @@
 {
   "name": "keystone-forgotten-password",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Mike James",
   "main": "index.js",
   "repository": "git@github.com:Thinkmill/keystone-forgotten-password.git",
