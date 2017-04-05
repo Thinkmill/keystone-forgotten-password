@@ -5,6 +5,7 @@
   "main": "index.js",
   "repository": "git@github.com:Thinkmill/keystone-forgotten-password.git",
   "license": "MIT",
+  "private": false,
   "dependencies": {
     "debug": "^2.6.3",
     "moment": "^2.18.1",
