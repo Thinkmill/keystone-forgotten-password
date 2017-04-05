@@ -1,4 +1,5 @@
 # Keystone Forgotten Password
+[![Build Status](https://travis-ci.org/Thinkmill/keystone-forgotten-password.svg?branch=master)](https://travis-ci.org/Thinkmill/keystone-forgotten-password)
 ## What is This?
 This is for keystone applications only. Keystone projects having a user model may require a reset password setup. this plugin adds the required models and routes, you will have to interact with the routes yourself in your own application, including writing your own email handlers.
 
