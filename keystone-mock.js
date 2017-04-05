@@ -34,8 +34,14 @@ const lists = {
 	ForgotPassword,
 };
 
+const gets = {
+	'user model': 'User',
+};
+
 const list = l => lists[l];
+const get = l => gets[l];
 
 module.exports = {
 	list,
+	get,
 };

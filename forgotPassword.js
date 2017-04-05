@@ -45,6 +45,7 @@ module.exports = ({ onForgotEmail }) => (req, res, next) => {
 			errors,
 		});
 	}
+
 	User.model
 	.findOne({ email })
 	.exec()
