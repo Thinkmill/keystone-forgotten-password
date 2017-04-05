@@ -9,5 +9,7 @@ matrix:
   include:
     - node_js: '6'
       script: yarn test
+    - node_js: '7'
+      script: yarn test
 git:
   depth: 10
