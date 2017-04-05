@@ -1,5 +1,6 @@
 const keystone = require('keystone');
 const uuid = require('uuid/v4');
+const debug = require('debug')('keystone');
 
 const sendForgottenPasswordEmail = (user, onForgotEmail) => forgotPassword => {
 	const locals = Object.assign({}, user.toJSON(), {
@@ -20,6 +21,14 @@ module.exports = ({ onForgotEmail }) => (req, res, next) => {
 	const User = keystone.list('User');
 	const ForgotPassword = keystone.list('ForgotPassword');
 	var errors = {};
+
+	if (!req.body) {
+		return res.status(400).json({
+			success: false,
+			errors: { body: 'Request body required' },
+		});
+	}
+
 	const { email } = req.body;
 	if (!email) {
 		errors.email = 'Email is required';
@@ -48,10 +57,15 @@ module.exports = ({ onForgotEmail }) => (req, res, next) => {
 			});
 			forgotPassword.save()
 			.then(sendForgottenPasswordEmail(user, onForgotEmail))
+			.then(() => {
+				res.status(200).json({ success: true });
+			})
 			.catch(error => {
-				console.error(`Error sending email to: ${email}. Error:`, error);
+				debug(`Error sending email to: ${email}. Error:`, error);
+				res.status(400).json({ success: false, errors: { emailSend: 'Email failed to send' } });
 			});
+		} else {
+			res.status(200).json({ success: true });
 		}
-		return res.status(200).json({ success: true });
 	}).catch(next);
 };

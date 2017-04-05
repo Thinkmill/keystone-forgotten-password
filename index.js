@@ -4,10 +4,10 @@ const changePassword = require('./changePassword');
 
 const internals = {};
 
-module.exports = internals.plugin = function keystoneForgottenPassword (config) {
+module.exports = internals.plugin = function keystoneForgottenPassword (config = {}) {
 	const routes = new Router();
 	const RESET_PASSWORD_KEY_EXPIRY = config.keyExpiry || 24;
-	const { onForgotEmail = Promise.resolve(), onChangePasswordEmail = Promise.resolve() } = config;
+	const { onForgotEmail = () => Promise.resolve(), onChangePasswordEmail = () => Promise.resolve() } = config;
 
 
 	routes.post('/forgot', forgotPassword({
