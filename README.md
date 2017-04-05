@@ -16,13 +16,13 @@ This plugin assumes you have a `user model` with a password property with a keys
 ## Usage
 
 For IP logging of requests ensure you set:
-``` JavaScript
+``` js
 	app.enable('trust proxy')
 ```
 
 
 
-```JavaScript
+```js
 
 // routes/index.js
 const forgottenPasswordPlugin = require('keystone-forgotten-password');
@@ -72,7 +72,7 @@ User.register();
 ## API
 
 ### Plugin
-```JavaScript
+```js
 const forgottenPasswordPlugin = require('keystone-forgotten-password');
 ```
 accepts the following config object.
@@ -83,7 +83,7 @@ accepts the following config object.
 | onChangePasswordEmail | requires a function which returns a promise. The promise is given the entire user object | Yes |
 | keyExpiry | Integer in hours, defaults to 24 hours. The key sent in the email will live until the given expiry | No |
 
-```JavaScript
+```js
 const { enhanceUser } = require('keystone-forgotten-password');
 ```
 
