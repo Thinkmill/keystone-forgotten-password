@@ -44,7 +44,21 @@ test('should handle bad email request', () => {
 
 });
 
-test('should handle no email', () => {
+test('should handle no body in request', () => {
+
+	app.use('/auth', forgotPassword());
+	return request(app)
+	.post('/auth/forgot')
+	.set('Accept', 'application/json')
+	.expect('Content-Type', /json/)
+	.expect(400)
+	.then(response => {
+		expect(response.body).toEqual({ success: false, errors: { email: 'Email is required' } });
+	});
+
+});
+
+test('should handle no email as an empty string', () => {
 
 	app.use('/auth', forgotPassword());
 	return request(app)

@@ -23,13 +23,6 @@ module.exports = ({ onForgotEmail }) => (req, res, next) => {
 	const ForgotPassword = keystone.list('ForgotPassword');
 	var errors = {};
 
-	if (!req.body) {
-		return res.status(400).json({
-			success: false,
-			errors: { body: 'Request body required' },
-		});
-	}
-
 	const { email } = req.body;
 	if (!email) {
 		errors.email = 'Email is required';
