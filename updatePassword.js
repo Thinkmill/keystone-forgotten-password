@@ -31,7 +31,7 @@ module.exports = ({ userRequest, onChangePasswordEmail }) => (req, res, next) =>
 	}
 
 	User.model
-	.findOne(req[userRequest].id)
+	.findOne({ _id: req[userRequest]._id })
 	.exec()
 	.then(user => {
 		return compare(user.password, existingPassword)

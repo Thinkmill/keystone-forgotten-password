@@ -69,7 +69,7 @@ test('New password validation error ', () => {
 
 test('change password password failing to confirm existing password', () => {
 	app.use(auth({
-		id: '1',
+		_id: '1',
 		password: '$2a$10$ju.NVefBklL87naLbHAsTO/DCx3mKfTV1c03EdkxaSCWt00EV/yki', // test1224
 	}), updatePassword());
 	return request(app)
@@ -85,7 +85,7 @@ test('change password password failing to confirm existing password', () => {
 
 test('Updates password', () => {
 	app.use(auth({
-		id: '1',
+		_id: '1',
 		password: '$2a$10$ju.NVefBklL87naLbHAsTO/DCx3mKfTV1c03EdkxaSCWt00EV/yki',
 	}), updatePassword());
 	return request(app)
@@ -101,7 +101,7 @@ test('Updates password', () => {
 
 test('handles custom userRequest property', () => {
 	app.use(auth({
-		id: '1',
+		_id: '1',
 		password: '$2a$10$ju.NVefBklL87naLbHAsTO/DCx3mKfTV1c03EdkxaSCWt00EV/yki',
 	}, 'appuser'), updatePassword({
 		userRequest: 'appuser',
@@ -121,7 +121,7 @@ test('handles onChangePasswordEmail handler', () => {
 	const onChangePasswordEmail = jest.fn();
 
 	app.use(auth({
-		id: '1',
+		_id: '1',
 		password: '$2a$10$ju.NVefBklL87naLbHAsTO/DCx3mKfTV1c03EdkxaSCWt00EV/yki',
 	}, 'appuser'), updatePassword({
 		userRequest: 'appuser',
@@ -136,7 +136,7 @@ test('handles onChangePasswordEmail handler', () => {
 	.then((response) => {
 		expect(response.body).toEqual({ success: true });
 		expect(onChangePasswordEmail.mock.calls.length).toBe(1);
-		expect(onChangePasswordEmail).toBeCalledWith({ email: 'test@test.com', id: '1', passwordLastUpdated: TIME_STAMP, recipientEmail: 'test@test.com' });
+		expect(onChangePasswordEmail).toBeCalledWith({ email: 'test@test.com', _id: '1', id: '1', passwordLastUpdated: TIME_STAMP, recipientEmail: 'test@test.com' });
 
 	});
 });

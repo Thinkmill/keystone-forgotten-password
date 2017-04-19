@@ -2,7 +2,7 @@ const { GUID } = require('./constants');
 
 const users = [
 	{
-		id: '1',
+		_id: '1',
 		email: 'test@test.com',
 		password: '$2a$10$ju.NVefBklL87naLbHAsTO/DCx3mKfTV1c03EdkxaSCWt00EV/yki',
 	},
@@ -20,7 +20,7 @@ class UserModel {
 		});
 		this.props = props;
 		this.query = query;
-		this.id = props.id || '1234';
+		this.id = props._id || '1234';
 	}
 
 	toJSON () {
@@ -32,15 +32,8 @@ class UserModel {
 	}
 
 	exec () {
-		let search;
-		if (typeof (this.query) === 'string') {
-			search = () => users.find(u => u.id === this.query);
-		} else {
-			const key = Object.keys(this.query)[0];
-			search = () => users.find(u => u[key] === this.query.email);
-		}
-
-		const found = search();
+		const key = Object.keys(this.query)[0];
+		const found = users.find(u => u[key] === this.query[key]);
 		if (!found) {
 			return Promise.resolve();
 		}
