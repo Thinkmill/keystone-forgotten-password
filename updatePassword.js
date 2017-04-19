@@ -50,7 +50,7 @@ module.exports = ({ userRequest, onChangePasswordEmail }) => (req, res, next) =>
 					success: true,
 				});
 			})
-			.then(sendChangePasswordEmail(user, onChangePasswordEmail))
+			.then(sendChangePasswordEmail(user, onChangePasswordEmail));
 		});
 	})
 	.catch((err) => {

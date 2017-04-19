@@ -4,8 +4,8 @@ const users = [
 	{
 		id: '1',
 		email: 'test@test.com',
-		password: '$2a$10$ju.NVefBklL87naLbHAsTO/DCx3mKfTV1c03EdkxaSCWt00EV/yki'
-	}
+		password: '$2a$10$ju.NVefBklL87naLbHAsTO/DCx3mKfTV1c03EdkxaSCWt00EV/yki',
+	},
 ];
 class UserModel {
 
