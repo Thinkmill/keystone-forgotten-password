@@ -101,6 +101,6 @@ test('onForgotEmail is called', () => {
 	.then(response => {
 		expect(response.body).toEqual({ success: true });
 		expect(onForgotEmail.mock.calls.length).toBe(1);
-		expect(onForgotEmail).toBeCalledWith({ email: 'test@test.com', forgotPasswordKey: GUID, id: '1234', recipientEmail: 'test@test.com' });
+		expect(onForgotEmail).toBeCalledWith({ email: 'test@test.com', forgotPasswordKey: GUID, id: '1', recipientEmail: 'test@test.com' });
 	});
 });

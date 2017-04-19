@@ -7,6 +7,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "debug": "^2.6.3",
     "moment": "^2.18.1",
     "uuid": "^3.0.1"
@@ -32,5 +33,17 @@
     "test": "jest && npm run lint",
     "lint": "eslint .",
     "test:watch": "jest --watch"
+  },
+  "jest": {
+    "collectCoverageFrom" : ["**/*.{js,jsx}", "!**/node_modules/**", "!**/vendor/**", "!coverage/**", "!model/**"],
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 85,
+        "functions": 85,
+        "lines": 90,
+        "statements": 70
+      }
+    }
   }
 }
