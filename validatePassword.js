@@ -22,7 +22,7 @@ const validate = password => {
 	const max = User.fields.password.options.max || 72;
 	const complexity = User.fields.password.options.complexity;
 
-	if (min && typeof passwordValue === 'string' && password.length < min) {
+	if (min && typeof password === 'string' && password.length < min) {
 		detail += 'password must be longer than ' + min + ' characters\n';
 	}
 
