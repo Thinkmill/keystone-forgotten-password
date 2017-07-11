@@ -20,20 +20,32 @@
     "body-parser": "^1.17.1",
     "eslint": "^3.18.0",
     "eslint-config-keystone": "^3.0.0",
+    "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-jest": "^19.0.1",
     "eslint-plugin-mocha": "^4.9.0",
     "eslint-plugin-react": "^6.10.3",
     "express": "^4.15.2",
+    "husky": "^0.14.3",
     "jest": "^19.0.2",
     "keystone": "^4.0.0-beta.5",
+    "lint-staged": "^4.0.1",
+    "prettier": "^1.5.2",
     "supertest": "^3.0.0",
     "timekeeper": "^1.0.0"
   },
   "scripts": {
     "test": "jest && npm run lint",
     "lint": "eslint .",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "precommit": "lint-staged",
+    "prettier": "prettier --write"
   },
+  "lint-staged": [
+    "yarn prettier",
+    "yarn lint",
+    "yarn test",
+    "git add"
+  ],
   "jest": {
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
