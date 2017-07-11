@@ -21,6 +21,18 @@ function auth (user, userRequest = 'user') {
 	};
 }
 
+function customAuth (user) {
+	console.log('here!?!');
+	return function (req, res, next) {
+		if (user) {
+			console.log('setting tokenUser', user);
+			res.tokenUser = user;
+			return next();
+		}
+		return res.sendStatus(401);
+	};
+}
+
 let app;
 
 beforeEach(() => {
@@ -125,6 +137,30 @@ test('handles onChangePasswordEmail handler', () => {
 		password: '$2a$10$ju.NVefBklL87naLbHAsTO/DCx3mKfTV1c03EdkxaSCWt00EV/yki',
 	}, 'appuser'), updatePassword({
 		userRequest: 'appuser',
+		onChangePasswordEmail,
+	}));
+	return request(app)
+	.post('/update-password')
+	.send({ password: 'Testing123', existingPassword: 'test1224' })
+	.set('Accept', 'application/json')
+	.expect('Content-Type', /json/)
+	.expect(200)
+	.then((response) => {
+		expect(response.body).toEqual({ success: true });
+		expect(onChangePasswordEmail.mock.calls.length).toBe(1);
+		expect(onChangePasswordEmail).toBeCalledWith({ email: 'test@test.com', _id: '1', id: '1', passwordLastUpdated: TIME_STAMP, recipientEmail: 'test@test.com' });
+
+	});
+});
+
+test('handles onChangePasswordEmail handler with custom resolveUserId function', () => {
+	const onChangePasswordEmail = jest.fn();
+
+	app.use(customAuth({
+		id: '1',
+		password: '$2a$10$ju.NVefBklL87naLbHAsTO/DCx3mKfTV1c03EdkxaSCWt00EV/yki',
+	}), updatePassword({
+		resolveUserId: (req, res) => res.tokenUser.id,
 		onChangePasswordEmail,
 	}));
 	return request(app)

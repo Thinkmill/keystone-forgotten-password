@@ -3,7 +3,7 @@ const keystone = require('keystone');
 const bcrypt = require('bcrypt');
 const updatePassword = require('./updateUserPassword');
 
-module.exports = ({ userRequest, onChangePasswordEmail }) => (req, res, next) => {
+module.exports = ({ resolveUserId, onChangePasswordEmail }) => (req, res, next) => {
 	const UserModel = keystone.get('user model');
 	const User = keystone.list(UserModel);
 
@@ -31,7 +31,7 @@ module.exports = ({ userRequest, onChangePasswordEmail }) => (req, res, next) =>
 	}
 
 	User.model
-	.findOne({ _id: req[userRequest]._id })
+	.findOne({ _id: resolveUserId(req, res) })
 	.exec()
 	.then(user => {
 		return compare(user.password, existingPassword)

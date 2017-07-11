@@ -2,6 +2,7 @@ const Router = require('express').Router;
 const forgotPassword = require('./forgotPassword');
 const changePassword = require('./changePassword');
 const updatePassword = require('./updatePassword');
+const defaultResolveUserId = require('./resolveUserId');
 const internals = {};
 
 module.exports = internals.plugin = function keystoneForgottenPassword (config = {}) {
@@ -32,9 +33,14 @@ internals.plugin.enhanceUserModel = function enhanceUserModel (Model) {
 
 internals.plugin.updatePassword = function keystoneUpdatePassword (config = {}) {
 	const routes = new Router();
-	const { onChangePasswordEmail = () => Promise.resolve(), userRequest = 'user' } = config;
+	let { onChangePasswordEmail = () => Promise.resolve(), userRequest = 'user', resolveUserId } = config;
+
+	if (!resolveUserId) {
+		resolveUserId = defaultResolveUserId(userRequest);
+	}
+
 	routes.post('/update-password', updatePassword({
-		userRequest,
+		resolveUserId,
 		onChangePasswordEmail,
 	}));
 
