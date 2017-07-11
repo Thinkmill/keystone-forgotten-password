@@ -32,6 +32,7 @@ const forgotPassword = ({ onForgotEmail }) => (req, res, next) => {
 		errors.email = 'Valid email required';
 	}
 
+
 	if (Object.keys(errors).length) {
 		return res.status(400).json({
 			success: false,
@@ -39,8 +40,10 @@ const forgotPassword = ({ onForgotEmail }) => (req, res, next) => {
 		});
 	}
 
+	const matchEmailIgnoreCase = new RegExp(email, 'i');
+
 	User.model
-	.findOne({ email })
+	.findOne({ email: matchEmailIgnoreCase })
 	.exec()
 	.then(user => {
 		if (user) {
