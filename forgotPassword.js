@@ -41,10 +41,8 @@ const forgotPassword = ({ onForgotEmail }) => (req, res, next) => {
     });
   }
 
-  const matchEmailIgnoreCase = new RegExp(email, "i");
-
   User.model
-    .findOne({ email: matchEmailIgnoreCase })
+    .findOne({ email: email.toLowercase() })
     .exec()
     .then(user => {
       if (user) {
