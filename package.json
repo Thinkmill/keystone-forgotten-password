@@ -40,12 +40,14 @@
     "precommit": "lint-staged",
     "prettier": "prettier --write"
   },
-  "lint-staged": [
-    "yarn prettier",
-    "yarn lint",
-    "yarn test",
-    "git add"
-  ],
+  "lint-staged": {
+    "*.js": [
+      "yarn prettier",
+      "yarn lint",
+      "yarn test",
+      "git add"
+    ]
+  },
   "jest": {
     "collectCoverageFrom": [
       "**/*.{js,jsx}",

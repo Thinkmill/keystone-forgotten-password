@@ -42,7 +42,7 @@ const forgotPassword = ({ onForgotEmail }) => (req, res, next) => {
   }
 
   User.model
-    .findOne({ email: email.toLowercase() })
+    .findOne({ email: email.toLowerCase() })
     .exec()
     .then(user => {
       if (user) {
@@ -60,12 +60,10 @@ const forgotPassword = ({ onForgotEmail }) => (req, res, next) => {
           })
           .catch(error => {
             debug(`Error sending email to: ${email}. Error:`, error);
-            res
-              .status(400)
-              .json({
-                success: false,
-                errors: { emailSend: "Email failed to send" }
-              });
+            res.status(400).json({
+              success: false,
+              errors: { emailSend: "Email failed to send" }
+            });
           });
       } else {
         res.status(200).json({ success: true });

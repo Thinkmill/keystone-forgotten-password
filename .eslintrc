@@ -1,5 +1,5 @@
 {
-  "extends": "keystone",
+  "extends": ["keystone", "prettier"],
   "plugins": ["jest"],
   "env": {
     "jest/globals": true

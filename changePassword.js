@@ -73,12 +73,10 @@ module.exports = ({ onChangePasswordEmail, RESET_PASSWORD_KEY_EXPIRY }) => (
           });
         return res.status(200).json({ success: true });
       } else {
-        return res
-          .status(400)
-          .json({
-            success: false,
-            errors: { general: "Request to reset password has expired" }
-          });
+        return res.status(400).json({
+          success: false,
+          errors: { general: "Request to reset password has expired" }
+        });
       }
     })
     .catch(next);
