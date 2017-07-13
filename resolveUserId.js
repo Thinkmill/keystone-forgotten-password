@@ -1,3 +1,3 @@
 module.exports = userRequest => (req, res) => {
-	return req[userRequest]._id;
+  return req[userRequest]._id;
 };
