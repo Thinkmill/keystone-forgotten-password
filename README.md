@@ -55,7 +55,7 @@ exports = module.exports = function (app) {
 
 // model/User.js
 const keystone = require('keystone');
-const { enhanceUser } = require('keystone-forgotten-password');
+const { enhanceUserModel } = require('keystone-forgotten-password');
 
 const User = new keystone.List('User');
 
@@ -64,7 +64,7 @@ User.add({
 	password: { type: keystone.Field.Types.Password },
 });
 
-enhanceUser(User);
+enhanceUserModel(User);
 
 User.schema.virtual('canAccessKeystone').get(function () {
 	return true;
