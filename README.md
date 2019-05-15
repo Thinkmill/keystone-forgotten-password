@@ -86,13 +86,13 @@ const { updatePassword } = require('keystone-forgotten-password');
 
 exports = module.exports = function (app) {
   app.get('/', routes.views.index);
-  app.use(middelwares.authenticated, updatePassword()); // route is added to /update-password
+  app.use(middleware.requireUser, updatePassword()); // route is added to /update-password
   // alternatively
-  app.use('/profile', middlewares.authenticated, updatePassword());
+  app.use('/profile', middleware.requireUser, updatePassword());
   
   // forgottenPassword checks by default req.user from your custom middleware, want to check a different property i.e. req.appUser?
   // want to send an email?
-  app.use('/profile', middlewares.authenticated, updatePassword({
+  app.use('/profile', middleware.requireUser, updatePassword({
   	userRequest: 'appUser',
   	onChangePasswordEmail: (locals) => sendChangePasswordEmail(locals),
   }));
