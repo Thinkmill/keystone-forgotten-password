@@ -7,14 +7,14 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "bcrypt": "^1.0.2",
+    "bcrypt": "^3.0.6",
     "debug": "^2.6.3",
     "moment": "^2.18.1",
     "uuid": "^3.0.1"
   },
   "peerDependencies": {
     "express": "^4.0.0",
-    "keystone": "4.0.0-beta.5"
+    "keystone": "4.0.0"
   },
   "devDependencies": {
     "body-parser": "^1.17.1",
@@ -27,7 +27,7 @@
     "express": "^4.15.2",
     "husky": "^0.14.3",
     "jest": "^19.0.2",
-    "keystone": "^4.0.0-beta.5",
+    "keystone": "^4.0.0",
     "lint-staged": "^4.0.1",
     "prettier": "^1.5.2",
     "supertest": "^3.0.0",
